@@ -1,0 +1,179 @@
+﻿<Window x:Class="Construction.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Construction"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF" 
+         
+        
+        MouseDown="Window_MouseDown" FontSize="15" Height="700" Width="1200" WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Storyboard x:Key="OpenMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="75"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="300"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="CloseMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="300"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="75"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--Верх-->
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" Background="#FF17191A">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Height="40" Content="X" Background="#FF35373A" Margin="0,0,10,0"></Button>
+            </StackPanel>
+        </Grid>
+        <!--Лівий бік-->
+        <Grid x:Name="GridMenu" Grid.Row="1" Grid.Column="0" Background="#FF1D1F20" fw:PointerTracker.Enabled="True">
+            <StackPanel>
+
+                <Grid Height="150" Background="Transparent" RenderTransformOrigin="0.5,0.5">
+                    <Grid.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Grid.RenderTransform>
+
+                    <Button x:Name="ButtonOpenMenu" Height="60" Width="60" Margin="13,80,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="White" Click="ButtonOpenMenu_Click">
+                        <materialDesign:PackIcon Kind="Menu" Width="40" Height="40"/>
+                    </Button>
+                    <Button x:Name="ButtonCloseMenu" Visibility="Collapsed" Height="58" Width="58" Margin="12,80,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="{x:Null}" Foreground="#FF081132" Click="ButtonCloseMenu_Click">
+                        <materialDesign:PackIcon Kind="ArrowLeft" Width="40" Height="40"/>
+                    </Button>
+
+                    <Image Height="80" VerticalAlignment="Bottom"/>
+                </Grid>
+
+
+                <Grid>
+                    <Border BorderThickness="1"  Background="#FFECECEC" Opacity="1" CornerRadius="10"  Margin="10,0,0,0">
+
+                        <ListView  Background="Transparent" x:Name="ListViewMenu" Foreground="OrangeRed" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                              SelectionChanged="ListViewMenu_SelectionChanged" Opacity="1" BorderThickness="0"  Margin="0,10,0,10"
+                               >
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:Name="w">
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="{Binding icon}" Height="40" Width="40" Margin="5,10,0,10"/>
+                                        <TextBlock Text="{Binding data}" VerticalAlignment="Center" Margin="30 10" 
+                                        FontWeight="Bold"
+                                        FontFamily="Helvetica"
+                                        FontSize="20"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Border>
+                </Grid>
+            </StackPanel>
+        </Grid>
+        
+        <!--Центр-->
+        <Grid Grid.Row="1" Grid.Column="1" Background="#FF1D1F20">
+            <TabControl x:Name="products">
+                <TabItem x:Name="smartphonesTab">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse Height="10" Width="10" Fill="Black" />
+                            <TextBlock Margin="3">Смартфоны</TextBlock>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <TabItem.Content>
+                        <StackPanel>
+                            <RadioButton IsChecked="True">iPhone S6</RadioButton>
+                            <RadioButton>LG G 4</RadioButton>
+                            <RadioButton>Lumia 550</RadioButton>
+                        </StackPanel>
+                    </TabItem.Content>
+                </TabItem>
+                <TabItem x:Name="tabletsTab">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Height="10" Width="10" Fill="Black" />
+                            <TextBlock Margin="3">Планшеты</TextBlock>
+                        </StackPanel>
+                    </TabItem.Header>
+                </TabItem>
+            </TabControl>
+        </Grid>
+        
+        
+        <!--Вхід (Фул прозора заливка)-->
+        <Grid x:Name="GridBlur" 
+            Grid.Row="1" Grid.ColumnSpan="2" Background="Gray" Opacity="0.9" >
+
+        </Grid> 
+        <!--Поле входу-->
+        <Grid x:Name="GridLogin"
+            Grid.Row="1" Grid.ColumnSpan="2" Background="Transparent">
+            <Border CornerRadius="20" Background="#FF35373A" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="400">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="300" Height="400">
+                    <Border CornerRadius="10,10,0,0" Background="#FF17191A" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" Height="60">
+                        <StackPanel>
+                            <TextBlock Margin="0,12,0,0" FontFamily="Helvetica" Text="ВХІД" Foreground="AliceBlue" FontSize="30" FontWeight="Medium" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                    </Border>
+                    <Border CornerRadius="10" Background="#FF35373A"  Width="300" Height="320">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30,0,0">
+                            <TextBox x:Name="TextLogin"
+                                MaxLength="20"
+                                FontFamily="Helvetica"
+                                FontWeight="Bold"
+                                materialDesign:HintAssist.Hint="ЛОГІН"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                FontSize="20"
+                                Foreground="White"
+                                BorderThickness="0,0,0,2"
+                                Width="250" Height="50" Cursor="IBeam">
+                            </TextBox>
+                            <TextBox x:Name="TextPassword"
+                                MaxLength="20"
+                                FontFamily="Helvetica"
+                                FontWeight="Bold"
+                                materialDesign:HintAssist.Hint="ПАРОЛЬ"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                FontSize="20"
+                                Foreground="White"
+                                BorderThickness="0,0,0,2" Margin="0,30,0,0"
+                                Width="250" Height="50" Cursor="IBeam">
+                            </TextBox>
+                            <StackPanel Margin="0,80,0,0">
+                                <Button x:Name="Login" Click="Login_Click" FontSize="20" Background="#FF1D1F20" Foreground="White" Content="УВІЙТИ" Height="40"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
