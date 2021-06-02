@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="Construction.UserControls.ExecutantControlers.ExecutantTabControler"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Construction.UserControls.ExecutantControlers"
+             mc:Ignorable="d" 
+            d:DesignHeight="650" d:DesignWidth="1100">
+    <Grid Background="#FF2A2C2E">
+        <TabControl x:Name="Executant" BorderThickness="0" Background="#FF2A2C2E">
+            <TabItem x:Name="CreateExecutant" BorderThickness="0">
+                <TabItem.Header >
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Margin="3" FontWeight="Medium" Text="Зареєструвати виконавця"></TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <StackPanel>
+                        <Grid x:Name="GridCreateExecutant" Width="1100" Height="620" Background="#FF2A2C2E">
+
+                        </Grid>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem x:Name="tabletsTab">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="3" Text="Список виконавців" FontWeight="Medium"></TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <StackPanel>
+                        <Grid x:Name="GridListExecutant" Width="1100" Height="615">
+
+                        </Grid>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

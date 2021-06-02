@@ -10,28 +10,7 @@
          
         
         MouseDown="Window_MouseDown" FontSize="15" Height="700" Width="1200" WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Window.Resources>
-        <Storyboard x:Key="OpenMenu">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="75"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="300"/>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="CloseMenu">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="300"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="75"/>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-    </Window.Resources>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
-            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
-            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
-        </EventTrigger>
-    </Window.Triggers>
+    
     
     <Grid>
         <Grid.ColumnDefinitions>
@@ -46,88 +25,44 @@
         <!--Верх-->
         <Grid Grid.Row="0" Grid.ColumnSpan="2" Background="#FF17191A">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Height="40" Content="X" Background="#FF35373A" Margin="0,0,10,0"></Button>
+                <Button Click="Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Height="40" Content="X" Background="#FF35373A" Margin="0,0,10,0"></Button>
             </StackPanel>
         </Grid>
-        <!--Лівий бік-->
-        <Grid x:Name="GridMenu" Grid.Row="1" Grid.Column="0" Background="#FF1D1F20" fw:PointerTracker.Enabled="True">
-            <StackPanel>
-
-                <Grid Height="150" Background="Transparent" RenderTransformOrigin="0.5,0.5">
-                    <Grid.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Grid.RenderTransform>
-
-                    <Button x:Name="ButtonOpenMenu" Height="60" Width="60" Margin="13,80,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="White" Click="ButtonOpenMenu_Click">
-                        <materialDesign:PackIcon Kind="Menu" Width="40" Height="40"/>
-                    </Button>
-                    <Button x:Name="ButtonCloseMenu" Visibility="Collapsed" Height="58" Width="58" Margin="12,80,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="{x:Null}" Foreground="#FF081132" Click="ButtonCloseMenu_Click">
-                        <materialDesign:PackIcon Kind="ArrowLeft" Width="40" Height="40"/>
-                    </Button>
-
-                    <Image Height="80" VerticalAlignment="Bottom"/>
-                </Grid>
-
-
-                <Grid>
-                    <Border BorderThickness="1"  Background="#FFECECEC" Opacity="1" CornerRadius="10"  Margin="10,0,0,0">
-
-                        <ListView  Background="Transparent" x:Name="ListViewMenu" Foreground="OrangeRed" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                              SelectionChanged="ListViewMenu_SelectionChanged" Opacity="1" BorderThickness="0"  Margin="0,10,0,10"
-                               >
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:Name="w">
-
-                                    <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="{Binding icon}" Height="40" Width="40" Margin="5,10,0,10"/>
-                                        <TextBlock Text="{Binding data}" VerticalAlignment="Center" Margin="30 10" 
-                                        FontWeight="Bold"
-                                        FontFamily="Helvetica"
-                                        FontSize="20"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </Border>
-                </Grid>
-            </StackPanel>
-        </Grid>
+        
         
         <!--Центр-->
-        <Grid Grid.Row="1" Grid.Column="1" Background="#FF1D1F20">
-            <TabControl x:Name="products">
-                <TabItem x:Name="smartphonesTab">
-                    <TabItem.Header>
-                        <StackPanel Orientation="Horizontal">
-                            <Ellipse Height="10" Width="10" Fill="Black" />
-                            <TextBlock Margin="3">Смартфоны</TextBlock>
-                        </StackPanel>
-                    </TabItem.Header>
-                    <TabItem.Content>
-                        <StackPanel>
-                            <RadioButton IsChecked="True">iPhone S6</RadioButton>
-                            <RadioButton>LG G 4</RadioButton>
-                            <RadioButton>Lumia 550</RadioButton>
-                        </StackPanel>
-                    </TabItem.Content>
-                </TabItem>
-                <TabItem x:Name="tabletsTab">
-                    <TabItem.Header>
-                        <StackPanel Orientation="Horizontal">
-                            <Rectangle Height="10" Width="10" Fill="Black" />
-                            <TextBlock Margin="3">Планшеты</TextBlock>
-                        </StackPanel>
-                    </TabItem.Header>
-                </TabItem>
-            </TabControl>
+        <Grid x:Name="GridMain" Grid.Row="1" Grid.Column="1" Background="#FF2A2C2E">
+            
         </Grid>
         
-        
+        <!--Лівий бік-->
+        <Grid x:Name="GridMenu" Grid.Row="1" Grid.Column="0" Background="#FF1D1F20" fw:PointerTracker.Enabled="True">
+            <StackPanel Margin="0,100,0,0">
+                <Grid>
+                    <ListView HorizontalAlignment="Center"  x:Name="ListViewMenu" Margin="2,0,2,0" Foreground="Gray" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged" BorderThickness="0" Background="#FF212324">
+
+                        <ListViewItem x:Name="Executant" Height="90">
+                            <StackPanel Orientation="Vertical">
+                                <materialDesign:PackIcon Kind="Accounts" Height="50" Width="50"  HorizontalAlignment="Center"/>
+                                <TextBlock Text="Працівники" FontSize="14" FontWeight="Medium"></TextBlock>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem x:Name="Brigade" Height="90">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="Helmet" Height="50" Width="50" HorizontalAlignment="Center"/>
+                                <TextBlock Text="   Бригади    " FontSize="14" FontWeight="Medium"></TextBlock>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem x:Name="Construction" Height="90">
+                            <StackPanel Orientation="Vertical">
+                                <materialDesign:PackIcon Kind="Building" Height="50" Width="50"  HorizontalAlignment="Center"/>
+                                <TextBlock Text="   Об'єкти    " FontSize="14" FontWeight="Medium"></TextBlock>
+                            </StackPanel>
+                        </ListViewItem>
+                    </ListView>
+                </Grid>
+            </StackPanel>
+        </Grid>
         <!--Вхід (Фул прозора заливка)-->
         <Grid x:Name="GridBlur" 
             Grid.Row="1" Grid.ColumnSpan="2" Background="Gray" Opacity="0.9" >

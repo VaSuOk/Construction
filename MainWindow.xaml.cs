@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Construction.UserControls.BrigadeControlers;
+using Construction.UserControls.ConstructionObjectControlers;
+using Construction.UserControls.ExecutantControlers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,13 +21,14 @@ namespace Construction
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-            
         }
+
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
@@ -37,19 +41,34 @@ namespace Construction
             GridLogin.Visibility = Visibility.Collapsed;
         }
 
-        private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            UserControl usc = null;
+            
+            GridMain.Children.Clear();
 
+            switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
+            {
+                case "Executant":
+                    usc = new ExecutantTabControler();
+                    GridMain.Children.Add(usc);
+                    break;
+                case "Brigade":
+                    usc = new BrigadeTabControl();
+                    GridMain.Children.Add(usc);
+                    break;
+                case "Construction":
+                    usc = new ConstructionTabControler();
+                    GridMain.Children.Add(usc);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
