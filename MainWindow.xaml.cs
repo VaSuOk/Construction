@@ -1,4 +1,5 @@
-﻿using Construction.UserControls.BrigadeControlers;
+﻿using Construction.HttpRequests;
+using Construction.UserControls.BrigadeControlers;
 using Construction.UserControls.ConstructionObjectControlers;
 using Construction.UserControls.ExecutantControlers;
 using System;
@@ -37,6 +38,17 @@ namespace Construction
         private void Login_Click(object sender, RoutedEventArgs e)
         {
             //login
+            /*
+            if(AdminRequest.AdminLogin(TextLogin.Text, TextPassword.Text) == 1)
+            {
+                GridBlur.Visibility = Visibility.Collapsed;
+                GridLogin.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                TextLogin.BorderBrush = Brushes.Red;
+                TextPassword.BorderBrush = Brushes.Red;
+            }*/
             GridBlur.Visibility = Visibility.Collapsed;
             GridLogin.Visibility = Visibility.Collapsed;
         }

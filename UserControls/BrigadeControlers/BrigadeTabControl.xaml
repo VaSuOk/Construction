@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="1100">
     <Grid Background="#FF2A2C2E">
-        <TabControl x:Name="Brigade">
+        <TabControl x:Name="Brigade" Style="{  DynamicResource MaterialDesignNavigatilRailTabControl}">
             <TabItem x:Name="CreateBrigade">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">

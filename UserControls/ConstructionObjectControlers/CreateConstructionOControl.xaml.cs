@@ -11,18 +11,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Construction.UserControls.ExecutantControlers
+namespace Construction.UserControls.ConstructionObjectControlers
 {
     /// <summary>
-    /// Логика взаимодействия для ExecutantTabControler.xaml
+    /// Логика взаимодействия для CreateConstructionOControl.xaml
     /// </summary>
-    public partial class ExecutantTabControler : UserControl
+    public partial class CreateConstructionOControl : UserControl
     {
-        public ExecutantTabControler()
+        public CreateConstructionOControl()
         {
             InitializeComponent();
-            GridCreateExecutant.Children.Add(new CreateExecutantControl());
-            GridListExecutant.Children.Add(new ListExecutantControl());
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
