@@ -21,6 +21,7 @@ namespace Construction.UserControls.ConstructionObjectControlers
         public ConstructionTabControler()
         {
             InitializeComponent();
+            GridCreateConstructionObject.Children.Add(new CreateConstructionOControl());
         }
     }
 }

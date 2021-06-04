@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
             d:DesignHeight="650" d:DesignWidth="1100">
     <Grid Background="#FF2A2C2E">
-        <TabControl x:Name="Executant" BorderThickness="0" Background="#FF2A2C2E">
+        <TabControl x:Name="Executant" TabStripPlacement="Top" Style="{  DynamicResource MaterialDesignNavigatilRailTabControl}" BorderThickness="0" Background="#FF2A2C2E">
             <TabItem x:Name="CreateExecutant" BorderThickness="0">
                 <TabItem.Header >
                     <StackPanel Orientation="Horizontal" >

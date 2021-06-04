@@ -100,22 +100,22 @@
                 <Label Content="Дані будівельного об'єкта" HorizontalAlignment="Center" FontSize="16" FontFamily="Helvetica"
                                 FontWeight="Bold" Margin="0,30,0,0"  Foreground="Gray" ></Label>
                 <ComboBox  VerticalContentAlignment="Bottom" FontFamily="Helvetica" Width="350" Height="50"  BorderThickness="0,0,0,2"
-                                materialDesign:HintAssist.Hint="Тип будівлі" FontSize="20" Foreground="White" FontWeight="Bold" Background="Transparent" x:Name ="ObjectType"
+                                materialDesign:HintAssist.Hint="Тип будівлі" FontSize="20" Foreground="White" FontWeight="Bold" Background="Transparent" x:Name ="CObjectType"
                                 Margin="0,0,0,30"  >
 
                 </ComboBox>
                 <ComboBox  VerticalContentAlignment="Bottom" FontFamily="Helvetica" Width="350" Height="50"  BorderThickness="0,0,0,2"
-                                materialDesign:HintAssist.Hint="Тип даху" FontSize="20" Foreground="White" FontWeight="Bold" Background="Transparent" x:Name ="TypeRoof"
+                                materialDesign:HintAssist.Hint="Тип даху" FontSize="20" Foreground="White" FontWeight="Bold" Background="Transparent" x:Name ="CTypeRoof"
                                 Margin="0,0,0,30"  >
 
                 </ComboBox>
                 <ComboBox  VerticalContentAlignment="Bottom" FontFamily="Helvetica" Width="350" Height="50"  BorderThickness="0,0,0,2"
-                                materialDesign:HintAssist.Hint="Матеріал покрівлі" FontSize="20" Foreground="White" FontWeight="Bold" Background="Transparent" x:Name ="RoofMaterial"
+                                materialDesign:HintAssist.Hint="Матеріал покрівлі" FontSize="20" Foreground="White" FontWeight="Bold" Background="Transparent" x:Name ="CRoofMaterial"
                                 Margin="0,0,0,30"  >
 
                 </ComboBox>
                 <ComboBox  VerticalContentAlignment="Bottom" FontFamily="Helvetica" Width="350" Height="50"  BorderThickness="0,0,0,2"
-                                materialDesign:HintAssist.Hint="Матеріал стін" FontSize="20" Foreground="White" FontWeight="Bold" Background="Transparent" x:Name ="WallMaterial"
+                                materialDesign:HintAssist.Hint="Матеріал стін" FontSize="20" Foreground="White" FontWeight="Bold" Background="Transparent" x:Name ="CWallMaterial"
                                 Margin="0,0,0,30"  >
 
                 </ComboBox>
