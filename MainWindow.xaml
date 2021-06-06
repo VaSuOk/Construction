@@ -59,6 +59,12 @@
                                 <TextBlock Text="   Об'єкти    " FontSize="14" FontWeight="Medium"></TextBlock>
                             </StackPanel>
                         </ListViewItem>
+                        <ListViewItem x:Name="Task" Height="90">
+                            <StackPanel Orientation="Vertical">
+                                <materialDesign:PackIcon Kind="CalendarTask" Height="50" Width="50"  HorizontalAlignment="Center"/>
+                                <TextBlock Text="   Завдання    " FontSize="14" FontWeight="Medium"></TextBlock>
+                            </StackPanel>
+                        </ListViewItem>
                     </ListView>
                 </Grid>
             </StackPanel>

@@ -11,18 +11,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Construction.UserControls.BrigadeControlers
+namespace Construction.UserControls.Task
 {
     /// <summary>
-    /// Логика взаимодействия для BrigadeTabControl.xaml
+    /// Логика взаимодействия для TaskTabController.xaml
     /// </summary>
-    public partial class BrigadeTabControl : UserControl
+    public partial class TaskTabController : UserControl
     {
-        public BrigadeTabControl()
+        public TaskTabController()
         {
             InitializeComponent();
-            GridCreateBrigade.Children.Add(new CreateBrigadeControl());
-            
         }
     }
 }

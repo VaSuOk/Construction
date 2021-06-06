@@ -2,6 +2,7 @@
 using Construction.UserControls.BrigadeControlers;
 using Construction.UserControls.ConstructionObjectControlers;
 using Construction.UserControls.ExecutantControlers;
+using Construction.UserControls.Task;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,6 +72,10 @@ namespace Construction
                     break;
                 case "Construction":
                     usc = new ConstructionTabControler();
+                    GridMain.Children.Add(usc);
+                    break;
+                case "Task":
+                    usc = new TaskTabController();
                     GridMain.Children.Add(usc);
                     break;
                 default:
