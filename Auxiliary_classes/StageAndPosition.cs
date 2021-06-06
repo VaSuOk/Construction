@@ -66,5 +66,50 @@ namespace Construction.Auxiliary_classes
                 }
             };
         }
+        public static List<StageAndPosition> Get4Categories()
+        {
+            return new List<StageAndPosition>
+            {
+                new StageAndPosition
+                {
+                    Stage = "Фундамент",
+                    Position = new List<string>
+                    {
+                        "Монолідчик",
+                        "Помічник"
+                    }
+                },
+                new StageAndPosition
+                {
+                    Stage = "Будівництво",
+                    Position = new List<string>
+                    {
+                        "Муляр",
+                        "Підсобник"
+                    }
+                },
+                new StageAndPosition
+                {
+                    Stage = "Покрівля",
+                    Position = new List<string>
+                    {
+                        "Тесляр",
+                        "Покрівельник",
+                        "Помічник"
+                    }
+                },
+                new StageAndPosition
+                {
+                    Stage = "Обробка",
+                    Position = new List<string>
+                    {
+                        "Штукатур",
+                        "Маляр",
+                        "Столяр",
+                        "Помічник"
+                    }
+                }
+            };
+        }
     }
 }

@@ -51,15 +51,15 @@
         <Grid Grid.Row="0" Grid.Column="1">
             <Border BorderBrush="#FF17191A" BorderThickness="3" Background="Transparent">
             <StackPanel Orientation="Vertical" Margin="0,0,0,0" >
-                <ListView x:Name="ListUsers" ItemsSource="{Binding PickUsers}" Width="600" SelectionMode="Single">
+                <ListView  x:Name="ListUsers" ItemsSource="{Binding PickUsers}" Width="600" SelectionMode="Single">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Height="50">
-                                <Button Width="80" Height="40" Content="ADD" Foreground="Gray" Background="#FF17191A"/>
-                                <Image Source="{Binding pickImage}"/>
-                                <TextBlock Text="{Binding pickname}"/>
-                                <TextBlock Text="{Binding picksurname}"/>
-                                <TextBlock Text="{Binding pickposition}"/>
+                                <Button Click="Button_Click_1" Width="80" Height="40" Content="ADD" Foreground="Gray" Background="#FF17191A"/>
+                                    <Image Margin="30,0,0,0" Source="{Binding user.UserImage}"/>
+                                    <TextBlock Margin="10,0,0,0" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Text="{Binding user.Name}"/>
+                                    <TextBlock Margin="10,0,0,0" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Text="{Binding user.Surname}"/>
+                                    <TextBlock Margin="10,0,0,0" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Text="{Binding Position }"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -82,34 +82,59 @@
             <Grid Background="Gray" Opacity="0.7">
                 
             </Grid>
-            <Grid Width="700" Background="#FF2A2C2E">
-                <StackPanel VerticalAlignment="Top" Orientation="Vertical" Background="#FF17191A" Height="130">
+            
+            <Grid Width="500" Background="#FF2A2C2E" Height="600">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="130"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" VerticalAlignment="Top" Background="#FF17191A" Height="130">
                     <Label Content="Оберіть працівника" HorizontalContentAlignment="Center" FontSize="22" FontWeight="Bold" Margin="0,10,0,0" Foreground="White"></Label>
 
-                    <ComboBox FontFamily="Helvetica" VerticalContentAlignment="Bottom" Width="250" Height="50" HorizontalContentAlignment="Center"  BorderThickness="0,0,0,2"
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment ="Center">
+                        <ComboBox FontFamily="Helvetica" VerticalContentAlignment="Bottom" Width="250" Height="50" HorizontalContentAlignment="Center"  BorderThickness="0,0,0,2"
                           x:Name="Position"      materialDesign:HintAssist.Hint="Професія" FontSize="20" Foreground="White" FontWeight="Bold" Background="Transparent" 
                                                     VerticalAlignment="Center"  Margin="0,20,0,0"  >
 
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel VerticalAlignment="Bottom">
-                    <ScrollViewer Grid.Row="1" Background="Transparent" Height="450" VerticalScrollBarVisibility="Auto" Margin="0,0,0,0" >
+                        </ComboBox>
+                        <Button Click="search_Click" x:Name="search" Width="100"  Height="40" Background="#FF2A2C2E" Content="Пошук" Margin="30,33,0,0" FontSize="20" />
+                    </StackPanel>
+
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Label Content="  Фото       |       ім'я       |       Прізвище       |    Посада     " HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold" Margin="0,0,0,0" Foreground="Gray"></Label>
+                </Grid>
+                
+
+
+                <Grid VerticalAlignment="Bottom" Grid.Row="2">
+                    <ScrollViewer Grid.Row="1" Background="Transparent" Height="380" VerticalScrollBarVisibility="Auto" Margin="0,0,0,0" >
                         <StackPanel Orientation="Vertical">
-                            <ListView ItemsSource="{Binding Users}">
+                            <ListView x:Name="ListWorker" ItemsSource="{Binding UserPick}" Margin="30,0,30,0" >
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
+                                        
                                         <StackPanel Orientation="Horizontal">
-                                            <Image Source="{Binding image}" Width="40" Height="40" />
-                                            <TextBlock Text="{Binding name}"/>
-                                            <TextBlock Text="{Binding surname}"/>
-                                            <TextBlock Text="{Binding position}"/>
+                                            <Image Source="{Binding user.UserImage}" Width="70" Height="50" />
+                                            <TextBlock Margin="10,0,0,0" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Text="{Binding user.Name}"/>
+                                            <TextBlock Margin="10,0,0,0" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Text="{Binding user.Surname}"/>
+                                            <TextBlock Margin="10,0,0,0" FontSize="18" FontWeight="Bold" HorizontalAlignment="Right"  VerticalAlignment="Center" Text="{Binding Position}"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
                         </StackPanel>
                     </ScrollViewer>
-                </StackPanel>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Click="pick_Click" x:Name="pick" Width="150"  Height="40" Background="#FF17191A" Foreground="Gray" Content="Обрати" Margin="0,0,0,0" FontSize="20" />
+                        <Button Click="cancel_Click" x:Name="cancel" Width="150"  Height="40" Background="#FF17191A" Foreground="Gray" Content="Скасувати" Margin="60,0,0,0" FontSize="20" Cursor="Hand" />
+                    </StackPanel>
+                    
+                </Grid>
             </Grid>
         </Grid>
     </Grid>

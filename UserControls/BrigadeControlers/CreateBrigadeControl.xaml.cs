@@ -1,4 +1,6 @@
 ﻿using Construction.Auxiliary_classes;
+using Construction.HttpRequests;
+using Construction.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -22,10 +24,11 @@ namespace Construction.UserControls.BrigadeControlers
     public partial class CreateBrigadeControl : UserControl
     {
         private Regions WRegions;
-        private List<StageAndPosition> stageAndPositions = StageAndPosition.GetCategories();
+        private List<StageAndPosition> stageAndPositions = StageAndPosition.Get4Categories();
 
         private List<AmountUsers> amountUsers = AmountUsers.GetAmounts();
-        private List<User> PickUsers;
+        private List<UserWorkInformation> PickWorkers;
+        private int id;
 
         public CreateBrigadeControl()
         {
@@ -34,7 +37,6 @@ namespace Construction.UserControls.BrigadeControlers
             InitializeComponent();
             InitAmountUsers();
             SetStage();
-
             WRegions = new Regions();
  
             WRegion.ItemsSource = WRegions.regions;
@@ -63,6 +65,40 @@ namespace Construction.UserControls.BrigadeControlers
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            id = ListUsers.SelectedIndex - 1;
+            UserPick.Visibility = Visibility.Visible;
+        }
+
+        private void search_Click(object sender, RoutedEventArgs e)
+        {
+                PickWorkers = UserWorkInformationRequest.GetUserByStageAndPosition( Stage.Text, Position.Text );
+                ListWorker.ItemsSource = PickWorkers;
+        }
+
+        private void pick_Click(object sender, RoutedEventArgs e)
+        {
+            var obj = ListWorker.SelectedItem;
+            if(obj != null)
+            {
+                UserWorkInformation b = (UserWorkInformation)obj;
+                UserPick.Visibility = Visibility.Collapsed;
+
+                //var tmp = ListUsers.SelectedItem;
+                //UserWorkInformation userWI = (UserWorkInformation)tmp;
+                //userWI = b;
+                ((AmountUsers)WorkerAmount.SelectedItem).users[id] = b;
+                ListUsers.ItemsSource = ((AmountUsers)WorkerAmount.SelectedItem).users;
+                ListUsers.ToolTip = null;
+            }
+        }
+
+        private void cancel_Click(object sender, RoutedEventArgs e)
+        {
+            UserPick.Visibility = Visibility.Collapsed;
         }
     }
 }

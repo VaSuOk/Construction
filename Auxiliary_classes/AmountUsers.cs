@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Construction.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using Сonstruction.Model;
 
@@ -8,7 +10,7 @@ namespace Construction.Auxiliary_classes
     public class AmountUsers
     {
         public string Amount { get; set; }
-        public List<User> users { get; set; }
+        public ObservableCollection<UserWorkInformation> users { get; set; }
 
         public override string ToString()
         {
@@ -22,40 +24,40 @@ namespace Construction.Auxiliary_classes
                 new AmountUsers
                 {
                     Amount = "4",
-                    users = new List<User>
+                    users = new ObservableCollection<UserWorkInformation>
                     {
-                        new User(),
-                        new User(),
-                        new User(),
-                        new User()
+                        new UserWorkInformation(),
+                        new UserWorkInformation(),
+                        new UserWorkInformation(),
+                        new UserWorkInformation()
                     }
                 },
                 new AmountUsers
                 {
                     Amount = "6",
-                    users = new List<User>
+                    users = new ObservableCollection<UserWorkInformation>
                     {
-                        new User(),
-                        new User(),
-                        new User(),
-                        new User(),
-                        new User(),
-                        new User()
+                        new UserWorkInformation(),
+                        new UserWorkInformation(),
+                        new UserWorkInformation(),
+                        new UserWorkInformation(),
+                        new UserWorkInformation(),
+                        new UserWorkInformation()
                     }
                 },
                 new AmountUsers
                 {
                     Amount = "8",
-                    users = new List<User>
+                    users = new ObservableCollection<UserWorkInformation>
                     {
-                        new User(),
-                        new User(),
-                        new User(),
-                        new User(),
-                        new User(),
-                        new User(),
-                        new User(),
-                        new User()
+                        new UserWorkInformation(),
+                        new UserWorkInformation(),
+                        new UserWorkInformation(),
+                        new UserWorkInformation(),
+                        new UserWorkInformation(),
+                        new UserWorkInformation(),
+                        new UserWorkInformation(),
+                        new UserWorkInformation()
                     }
                 },
             };

@@ -27,6 +27,22 @@ namespace Construction.HttpRequests
                 return null;
             }
         }
+
+        public static List<UserWorkInformation> GetUserByStageAndPosition(string Stage, string Position)
+        {
+            try
+            {
+                var webRequest = (HttpWebRequest)WebRequest.Create("https://localhost:44394/UserWorkInformation/" + Stage + "/" + Position);
+                var webResponse = (HttpWebResponse)webRequest.GetResponse();
+                var reader = new StreamReader(webResponse.GetResponseStream());
+                string temp = reader.ReadToEnd();
+                return JsonConvert.DeserializeObject<List<UserWorkInformation>>(temp);
+            }
+            catch
+            {
+                return null;
+            }
+        }
         #endregion
 
         #region POST
