@@ -49,22 +49,32 @@
         
         <!--Вибір учасників-->
         <Grid Grid.Row="0" Grid.Column="1">
-            <Border BorderBrush="#FF17191A" BorderThickness="3" Background="Transparent">
-            <StackPanel Orientation="Vertical" Margin="0,0,0,0" >
-                <ListView  x:Name="ListUsers" ItemsSource="{Binding PickUsers}" Width="600" SelectionMode="Single">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Height="50">
-                                <Button Click="Button_Click_1" Width="80" Height="40" Content="ADD" Foreground="Gray" Background="#FF17191A"/>
+            <Border BorderBrush="#FF17191A" BorderThickness="1" Background="Transparent">
+            <StackPanel Orientation="Vertical" Margin="0,0,0,0" ><ScrollViewer Height="500" Background="Transparent">
+                    <ListView  x:Name="ListUsers"  ItemsSource="{Binding PickUsers}" Width="600" SelectionMode="Single"   >
+                        <ListView.ItemTemplate >
+                        <DataTemplate  >
+                                
+                                <StackPanel Orientation="Vertical" Background="#FF17191A">
+                                    <StackPanel Orientation="Horizontal" Height="50" >
                                     <Image Margin="30,0,0,0" Source="{Binding user.UserImage}"/>
-                                    <TextBlock Margin="10,0,0,0" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Text="{Binding user.Name}"/>
-                                    <TextBlock Margin="10,0,0,0" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Text="{Binding user.Surname}"/>
-                                    <TextBlock Margin="10,0,0,0" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Text="{Binding Position }"/>
+                                    <TextBlock Width="100" Margin="10,0,0,0" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Text="{Binding user.Name}"/>
+                                    <TextBlock Width="100" Margin="10,0,0,0" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Text="{Binding user.Surname}"/>
+                                    <TextBlock Width="200" Margin="10,0,0,0" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Text="{Binding Position }"/>
+                                    
                             </StackPanel>
+                                <Border BorderBrush="#FF17191A" Width="560" BorderThickness="1"></Border>
+                                </StackPanel>
+                                
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                </ListView>
-            </StackPanel></Border>
+                </ListView></ScrollViewer>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                        <Button Click="Button_Click_1" Content="ADD" Background="#FF17191A" Width="100"  Foreground="Gray"></Button>
+                        <Button Click="Button_Click_2" Margin="30,0,0,0" Content="DELETE" Background="#FF17191A" Width="100"  Foreground="Gray"></Button>
+                    </StackPanel>
+                    
+                </StackPanel></Border>
         </Grid>
         <!--Низ логбар+кнопки-->
         <Grid Grid.Row="1" Grid.ColumnSpan="2">
@@ -91,7 +101,7 @@
                     <RowDefinition Height="50"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0" VerticalAlignment="Top" Background="#FF17191A" Height="130">
-                    <Label Content="Оберіть працівника" HorizontalContentAlignment="Center" FontSize="22" FontWeight="Bold" Margin="0,10,0,0" Foreground="White"></Label>
+                    <Label  Content="Оберіть працівника" HorizontalContentAlignment="Center" FontSize="22" FontWeight="Bold" Margin="0,10,0,0" Foreground="White"></Label>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment ="Center">
                         <ComboBox FontFamily="Helvetica" VerticalContentAlignment="Bottom" Width="250" Height="50" HorizontalContentAlignment="Center"  BorderThickness="0,0,0,2"

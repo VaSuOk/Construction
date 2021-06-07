@@ -28,6 +28,8 @@ namespace Construction.UserControls.BrigadeControlers
 
         private List<AmountUsers> amountUsers = AmountUsers.GetAmounts();
         private List<UserWorkInformation> PickWorkers;
+
+        private Brigade brigade;
         private int id;
 
         public CreateBrigadeControl()
@@ -38,7 +40,7 @@ namespace Construction.UserControls.BrigadeControlers
             InitAmountUsers();
             SetStage();
             WRegions = new Regions();
- 
+            brigade = new Brigade();
             WRegion.ItemsSource = WRegions.regions;
         }
 
@@ -64,15 +66,15 @@ namespace Construction.UserControls.BrigadeControlers
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            if (CheakInputData())
+            {
+                brigade.Amount = Convert.ToInt32(WorkerAmount.Text);
+                brigade.Name = TextNameBrigade.Text;
+                brigade.WorkRegion = WRegion.Text;
+                brigade.WorkStage = Stage.Text;
+                BrigadeRequest.CreateBrigade(brigade);
+            }
         }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            id = ListUsers.SelectedIndex - 1;
-            UserPick.Visibility = Visibility.Visible;
-        }
-
         private void search_Click(object sender, RoutedEventArgs e)
         {
                 PickWorkers = UserWorkInformationRequest.GetUserByStageAndPosition( Stage.Text, Position.Text );
@@ -87,18 +89,126 @@ namespace Construction.UserControls.BrigadeControlers
                 UserWorkInformation b = (UserWorkInformation)obj;
                 UserPick.Visibility = Visibility.Collapsed;
 
-                //var tmp = ListUsers.SelectedItem;
-                //UserWorkInformation userWI = (UserWorkInformation)tmp;
-                //userWI = b;
                 ((AmountUsers)WorkerAmount.SelectedItem).users[id] = b;
                 ListUsers.ItemsSource = ((AmountUsers)WorkerAmount.SelectedItem).users;
                 ListUsers.ToolTip = null;
+                InitUserToBrigade(id, (int)b.ID);
             }
         }
 
         private void cancel_Click(object sender, RoutedEventArgs e)
         {
             UserPick.Visibility = Visibility.Collapsed;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (CheakInputData())
+            {
+                if (ListUsers.SelectedIndex > -1)
+                {
+                    LogBar.Visibility = Visibility.Hidden;
+                    id = ListUsers.SelectedIndex;
+                    UserPick.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    LogBar.Content = "Оберіть поле працівника!";
+                    LogBar.Visibility = Visibility.Visible;
+                }
+            }
+            
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            id = ListUsers.SelectedIndex;
+            if (id > -1)
+            {
+                var obj = ListWorker.SelectedItem;
+                if (obj != null)
+                {
+                    
+                    ((AmountUsers)WorkerAmount.SelectedItem).users[id] = new UserWorkInformation();
+                    ListUsers.ItemsSource = ((AmountUsers)WorkerAmount.SelectedItem).users;
+                    ListUsers.ToolTip = null;
+                    InitUserToBrigade(id);
+                }
+            }
+            else
+            {
+                LogBar.Content = "Оберіть поле працівника!";
+                LogBar.Visibility = Visibility.Visible;
+            }
+        }
+        private void InitUserToBrigade(int index, int id = 0)
+        {
+            switch(index)
+            {
+                case 0:
+                    {
+                        brigade.ID_user1 = id;
+                        break;
+                    }
+                case 1:
+                    {
+                        brigade.ID_user2 = id;
+                        break;
+                    }
+                case 2:
+                    {
+                        brigade.ID_user3 = id;
+                        break;
+                    }
+                case 3:
+                    {
+                        brigade.ID_user4 = id;
+                        break;
+                    }
+                case 4:
+                    {
+                        brigade.ID_user5 = id;
+                        break;
+                    }
+                case 5:
+                    {
+                        brigade.ID_user6 = id;
+                        break;
+                    }
+                case 6:
+                    {
+                        brigade.ID_user7 = id;
+                        break;
+                    }
+                case 7:
+                    {
+                        brigade.ID_user8 = id;
+                        break;
+                    }
+            }
+        }
+        private bool CheakInputData()
+        {
+            LogBar.Foreground = Brushes.Red;
+            LogBar.Visibility = Visibility.Visible;
+            if(string.IsNullOrWhiteSpace(TextNameBrigade.Text))
+            {
+                LogBar.Content = "Введіть назву бригади!";
+            }
+            else if(string.IsNullOrWhiteSpace(WRegion.Text))
+            {
+                LogBar.Content = "Оберіть регіон роботи!";
+            }
+            else if(string.IsNullOrWhiteSpace(Stage.Text))
+            {
+                LogBar.Content = "Оберіть етап виконання!";
+            }
+            else if(string.IsNullOrWhiteSpace(WorkerAmount.Text))
+            {
+                LogBar.Content = "Оберіть кількість учасників!";
+            }
+            else return true;
+            return false;
         }
     }
 }
