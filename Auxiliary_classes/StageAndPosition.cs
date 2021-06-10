@@ -13,6 +13,29 @@ namespace Construction.Auxiliary_classes
         {
             return Stage;
         }
+        public static int GetIndexStage(string Stage)
+        {
+            switch (Stage)
+            {
+                case "Архітектування":
+                    return 0;
+                    break;
+                case "Фундамент":
+                    return 1;
+                    break;
+                case "Будівництво":
+                    return 2;
+                    break;
+                case "Покрівля":
+                    return 3;
+                    break;
+                case "Обробка":
+                    return 4;
+                    break;
+                default: return -1;
+            }
+
+        }
         public static List<StageAndPosition> GetCategories()
         {
             return new List<StageAndPosition>

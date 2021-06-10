@@ -28,11 +28,14 @@ namespace Construction.HttpRequests
             }
         }
 
-        public static List<UserWorkInformation> GetUserByStageAndPosition(string Stage, string Position)
+        public static List<UserWorkInformation> GetUserByStageAndPosition( string Region, string Stage, string Position)
         {
+            if(Region == "") { Region = "none"; }
+            if(Stage == "") { Stage = "none"; }
+            if(Position == "") { Position = "none"; }
             try
             {
-                var webRequest = (HttpWebRequest)WebRequest.Create("https://localhost:44394/UserWorkInformation/" + Stage + "/" + Position);
+                var webRequest = (HttpWebRequest)WebRequest.Create("https://localhost:44394/UserWorkInformation/" + Region + "/" + Stage + "/" + Position);
                 var webResponse = (HttpWebResponse)webRequest.GetResponse();
                 var reader = new StreamReader(webResponse.GetResponseStream());
                 string temp = reader.ReadToEnd();
@@ -46,7 +49,33 @@ namespace Construction.HttpRequests
         #endregion
 
         #region POST
+        public static async System.Threading.Tasks.Task PostUpdateUWI(UserWorkInformation userWorkInformation)
+        {
+            //int test = 0;
+            try
+            {
+                using (var client = new HttpClient())
+                using (var request = new HttpRequestMessage(HttpMethod.Post, String.Format("https://localhost:44394/UserWorkInformation")))
+                {
+                    var json = JsonConvert.SerializeObject(userWorkInformation);
+                    using (var stringContent = new StringContent(json, Encoding.UTF8, "application/json"))
+                    {
+                        request.Content = stringContent;
 
+                        using (var response = await client
+                            .SendAsync(request, HttpCompletionOption.ResponseHeadersRead)
+                            .ConfigureAwait(false))
+                        {
+                            response.EnsureSuccessStatusCode();
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
         #endregion
 
         #region PUT
@@ -75,6 +104,25 @@ namespace Construction.HttpRequests
             {
                 //!!!!!!
             }
+        }
+        #endregion
+
+        #region DELETE
+
+        public static async System.Threading.Tasks.Task DeleteUserWI(int id)
+        {
+            using (var client = new HttpClient())
+            using (var request = new HttpRequestMessage(HttpMethod.Delete, String.Format("https://localhost:44394/UserWorkInformation/"+ id)))
+            {
+
+                using (var response = await client
+                    .SendAsync(request, HttpCompletionOption.ResponseHeadersRead)
+                    .ConfigureAwait(false))
+                {
+                    response.EnsureSuccessStatusCode();
+                }
+            }
+
         }
         #endregion
     }

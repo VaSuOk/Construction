@@ -17,7 +17,7 @@
                 <TabItem.Content>
                     <StackPanel>
                         <Grid x:Name="GridCreateTaskArchitect" Width="1100" Height="615">
-
+                            <Button Click="Button_Click"></Button>
                         </Grid>
                     </StackPanel>
                 </TabItem.Content>

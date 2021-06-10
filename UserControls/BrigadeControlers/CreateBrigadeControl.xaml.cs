@@ -77,7 +77,7 @@ namespace Construction.UserControls.BrigadeControlers
         }
         private void search_Click(object sender, RoutedEventArgs e)
         {
-                PickWorkers = UserWorkInformationRequest.GetUserByStageAndPosition( Stage.Text, Position.Text );
+                PickWorkers = UserWorkInformationRequest.GetUserByStageAndPosition( WRegion.Text, Stage.Text, Position.Text );
                 ListWorker.ItemsSource = PickWorkers;
         }
 

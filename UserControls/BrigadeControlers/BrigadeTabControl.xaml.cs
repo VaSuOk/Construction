@@ -22,7 +22,7 @@ namespace Construction.UserControls.BrigadeControlers
         {
             InitializeComponent();
             GridCreateBrigade.Children.Add(new CreateBrigadeControl());
-            
+            GridListBrigade.Children.Add(new BrigadeListControl());
         }
     }
 }

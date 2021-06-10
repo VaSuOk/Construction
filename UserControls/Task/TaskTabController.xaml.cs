@@ -22,5 +22,10 @@ namespace Construction.UserControls.Task
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Tasks.SelectedIndex++;
+        }
     }
 }

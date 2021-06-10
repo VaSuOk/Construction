@@ -20,5 +20,6 @@ namespace Construction.Model
         public int ID_user6 { get; set; }
         public int ID_user7 { get; set; }
         public int ID_user8 { get; set; }
+        public int TaskID { get; set; }
     }
 }

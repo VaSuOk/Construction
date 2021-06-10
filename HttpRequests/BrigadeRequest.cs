@@ -2,6 +2,8 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 
@@ -37,5 +39,25 @@ namespace Construction.HttpRequests
             }
         }
         #endregion
+        #region GET
+        public static List<Brigade> GetBrigade(string Region, string Stage, bool isWork)
+        {
+            if (Region == "") { Region = "none"; }
+            if (Stage == "") { Stage = "none"; }
+            
+            try
+            {
+                var webRequest = (HttpWebRequest)WebRequest.Create("https://localhost:44394/Brigade/" + Region + "/" + Stage + "/" + isWork);
+                var webResponse = (HttpWebResponse)webRequest.GetResponse();
+                var reader = new StreamReader(webResponse.GetResponseStream());
+                string temp = reader.ReadToEnd();
+                return JsonConvert.DeserializeObject<List<Brigade>>(temp);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+#endregion
     }
 }

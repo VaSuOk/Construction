@@ -33,7 +33,13 @@ namespace Construction
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            DragMove();
+            try{
+                DragMove();
+            }
+            catch
+            {
+
+            }
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)
