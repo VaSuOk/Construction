@@ -72,5 +72,18 @@ namespace Construction.UserControls.ExecutantControlers
             userWI.userWorkInformation = UserWorkInformationRequest.GetUserByStageAndPosition(WRegion.Text, Stage.Text, Position.Text);
             ListView.ItemsSource = userWI.userWorkInformation;
         }
+
+        private void Border_MouseEnter(object sender, MouseEventArgs e)
+        {
+            var border = (Border)sender;
+            border.Background = Brushes.Gray;
+        }
+
+        private void Border_MouseLeave(object sender, MouseEventArgs e)
+        {
+            var border = (Border)sender;
+            var bc = new BrushConverter();
+            border.Background = (Brush)bc.ConvertFrom("#FF1D1F20");
+        }
     }
 }

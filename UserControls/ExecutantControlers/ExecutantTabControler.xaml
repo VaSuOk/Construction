@@ -63,6 +63,7 @@
                                                 <ItemsControl x:Name="ListView" ItemsSource="{Binding userWorkInformation}" >
                                                     <ItemsControl.ItemTemplate>
                                                         <DataTemplate>
+                                                            <Border Width="205" Height="255" CornerRadius ="10" BorderThickness="3" fw:PointerTracker.Enabled="True" Background="#FF1D1F20" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
                                                             <Border Margin="0,0,0,0" Width="200" Height="250" CornerRadius ="10" BorderThickness="3" fw:PointerTracker.Enabled="True" Background="#FF1D1F20" PreviewMouseDown="Border_PreviewMouseDown">
                                                                 <StackPanel>
                                                                     <Border Width="190" Height="160" CornerRadius="10" Margin="0">
@@ -124,6 +125,7 @@
 
 
                                                                 </StackPanel>
+                                                                </Border>
                                                             </Border>
                                                         </DataTemplate>
                                                     </ItemsControl.ItemTemplate>

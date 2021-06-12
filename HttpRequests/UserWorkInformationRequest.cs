@@ -27,6 +27,21 @@ namespace Construction.HttpRequests
                 return null;
             }
         }
+        public static UserWorkInformation GetUserWIByID(int ID)
+        {
+            try
+            {
+                var webRequest = (HttpWebRequest)WebRequest.Create("https://localhost:44394/UserWorkInformation/"+ID);
+                var webResponse = (HttpWebResponse)webRequest.GetResponse();
+                var reader = new StreamReader(webResponse.GetResponseStream());
+                string temp = reader.ReadToEnd();
+                return JsonConvert.DeserializeObject<UserWorkInformation>(temp);
+            }
+            catch
+            {
+                return null;
+            }
+        }
 
         public static List<UserWorkInformation> GetUserByStageAndPosition( string Region, string Stage, string Position)
         {

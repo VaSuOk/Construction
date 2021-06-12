@@ -26,11 +26,13 @@ namespace Construction.UserControls.BrigadeControlers
         private Regions regions;
         private Stage stage;
         private WorkStatus workStatus;
+        private TabItem tabItem1;
 
-        public BrigadeListControl()
+        public BrigadeListControl(ref TabItem tabItem)
         {
             InitializeComponent();
             InitList();
+            tabItem1 = tabItem;
             regions = new Regions();
             stage = new Stage();
             workStatus = new WorkStatus();
@@ -64,12 +66,31 @@ namespace Construction.UserControls.BrigadeControlers
 
         private void Border_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            
+            var border = (FrameworkElement)sender;
+            var text = (ViewBrigade)border.DataContext;
+            if (text.brigade.ID > 0)
+            {
+                tabItem1.Content = new SeletedBrigadeInfoControl(text);
+                tabItem1.Visibility = Visibility.Visible;
+            }
         }
 
         private void BFilter_Click(object sender, RoutedEventArgs e)
         {
             InitList();
+        }
+
+        private void BSelected_MouseEnter(object sender, MouseEventArgs e)
+        {
+            var border = (Border)sender;
+            border.Background = Brushes.Gray;
+        }
+
+        private void BSelected_MouseLeave(object sender, MouseEventArgs e)
+        {
+            var border = (Border)sender;
+            var bc = new BrushConverter();
+            border.Background =(Brush)bc.ConvertFrom("#FF1D1F20");
         }
     }
 }

@@ -40,7 +40,8 @@
                             <ItemsControl x:Name="ListView" ItemsSource="{Binding viewBrigades}" >
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Border Margin="15,0,0,0" Width="500" Height="100" CornerRadius ="10" BorderThickness="3" fw:PointerTracker.Enabled="True" Background="#FF1D1F20" >
+                                        <Border Margin="5,0,0,0" Width="510" Height="110" PreviewMouseDown="Border_PreviewMouseDown" CornerRadius ="10" BorderThickness="3" fw:PointerTracker.Enabled="True" Background="#FF1D1F20" MouseEnter="BSelected_MouseEnter" MouseLeave="BSelected_MouseLeave" >
+                                            <Border Width="500" Height="100" CornerRadius ="10" BorderThickness="3" fw:PointerTracker.Enabled="True" Background="#FF1D1F20">
                                             <StackPanel Orientation="Vertical"  Width="500" Height="100">
                                                 <StackPanel Orientation="Vertical" Height="60">
                                                     <StackPanel Orientation="Horizontal" Height="22" Background="Transparent">
@@ -94,7 +95,7 @@
                                                         </TextBlock>
                                                     </StackPanel>
                                                 </StackPanel>
-                                            </StackPanel>
+                                            </StackPanel></Border>
                                         </Border>
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>

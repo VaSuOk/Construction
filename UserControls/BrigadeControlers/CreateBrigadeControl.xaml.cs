@@ -34,8 +34,6 @@ namespace Construction.UserControls.BrigadeControlers
 
         public CreateBrigadeControl()
         {
-            
-
             InitializeComponent();
             InitAmountUsers();
             SetStage();
