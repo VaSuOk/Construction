@@ -2,6 +2,8 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 
@@ -34,6 +36,27 @@ namespace Construction.HttpRequests
             catch
             {
                 //!!!!!!
+            }
+        }
+        #endregion
+        #region GET
+        public static List<ConstructionObject> GetALLConstO(string Region = "none", string Sity = "none", string Type = "none")
+        {
+            if (Region == "") { Region = "none"; }
+            if (Sity == "") { Sity = "none"; }
+            if (Type == "") { Type = "none"; }
+
+            try
+            {
+                var webRequest = (HttpWebRequest)WebRequest.Create("https://localhost:44394/ConstructionObject/" + Region + "/" + Sity + "/" + Type);
+                var webResponse = (HttpWebResponse)webRequest.GetResponse();
+                var reader = new StreamReader(webResponse.GetResponseStream());
+                string temp = reader.ReadToEnd();
+                return JsonConvert.DeserializeObject<List<ConstructionObject>>(temp);
+            }
+            catch
+            {
+                return null;
             }
         }
         #endregion

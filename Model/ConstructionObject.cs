@@ -18,5 +18,6 @@ namespace Construction.Model
         public string WallMaterial { get; set; }
 
         public string DataCreate { get; set; }
+        public byte[] Image { get; set; }
     }
 }

@@ -7,9 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Source\Private.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentWPF" Version="0.9.0" />
     <PackageReference Include="MaterialDesignThemes" Version="4.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Source\Private.png" />
   </ItemGroup>
 
 </Project>
