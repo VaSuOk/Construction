@@ -84,7 +84,7 @@
                 <Border BorderBrush="#FF17191A" BorderThickness="1" Background="Transparent">
                     <StackPanel Orientation="Vertical" Margin="0,0,0,0" >
                         <ScrollViewer Height="420" Background="Transparent">
-                            <ListView  x:Name="ListUsers"  ItemsSource="{Binding users}" Width="390" SelectionMode="Single" MouseDoubleClick="ListUsers_MouseDoubleClick"   >
+                            <ListView   x:Name="ListUsers"  ItemsSource="{Binding users}" Width="390" SelectionMode="Single" MouseDoubleClick="ListUsers_MouseDoubleClick" >
                                 <ListView.ItemTemplate >
                                     <DataTemplate  >
 

@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Сonstruction.Auxiliary_classes;
+using Сonstruction.Model;
 
 namespace Construction.UserControls.BrigadeControlers
 {
@@ -67,12 +68,41 @@ namespace Construction.UserControls.BrigadeControlers
 
         private void DeleteBrigade_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (BrigadeRequest.DeleteBrigade(viewBrigade1.brigade.ID).Result)
+            {
+                LogBar.Content = "Бригада успішно розпущена!";
+                LogBar.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                LogBar.Content = "Розпущення не вдалося! Відсутнє зєднання.";
+                LogBar.Visibility = Visibility.Visible;
+            }
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            if (CheakInputData())
+            {
+                viewBrigade1.brigade.Name = TextNameBrigade.Text;
+                viewBrigade1.brigade.WorkRegion = WRegion.Text;
+                viewBrigade1.brigade.WorkStage = Stage.Text;
+                viewBrigade1.brigade.Amount = Convert.ToInt32(WorkerAmount.Text);
+                Brigade brigade = viewBrigade1.brigade;
+                AmountUsers.SetUsersID(ref brigade, (AmountUsers)WorkerAmount.SelectedItem);
+                viewBrigade1.brigade = brigade;
 
+                if (BrigadeRequest.UppdateBrigade(viewBrigade1.brigade).Result)
+                {
+                    LogBar.Content = "Зміни збережені!";
+                    LogBar.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    LogBar.Content = "Відсутнє зєднання з сервером!";
+                    LogBar.Visibility = Visibility.Visible;
+                }
+            }
         }
 
         private bool CheakInputData()
@@ -127,6 +157,7 @@ namespace Construction.UserControls.BrigadeControlers
                 {
 
                     ((AmountUsers)WorkerAmount.SelectedItem).users[id] = new UserWorkInformation();
+                    ListUsers.ItemsSource = null;
                     ListUsers.ItemsSource = ((AmountUsers)WorkerAmount.SelectedItem).users;
                     ListUsers.ToolTip = null;
                     InitUserToBrigade(id);
@@ -201,6 +232,7 @@ namespace Construction.UserControls.BrigadeControlers
                 UserPick.Visibility = Visibility.Collapsed;
 
                 ((AmountUsers)WorkerAmount.SelectedItem).users[id] = b;
+                ListUsers.ItemsSource = null;
                 ListUsers.ItemsSource = ((AmountUsers)WorkerAmount.SelectedItem).users;
                 ListUsers.ToolTip = null;
                 InitUserToBrigade(id, (int)b.ID);

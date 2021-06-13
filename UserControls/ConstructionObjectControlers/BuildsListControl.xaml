@@ -39,10 +39,10 @@
                             <ItemsControl x:Name="ListView" ItemsSource="{Binding buildList}" >
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Border Width="325" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" Height="205" CornerRadius ="10" BorderThickness="3" fw:PointerTracker.Enabled="True" Background="#FF1D1F20">
-                                            <Border Margin="0,0,0,0" Width="320" Height="200" CornerRadius ="10" BorderThickness="3" fw:PointerTracker.Enabled="True" Background="#FF1D1F20">
+                                        <Border Margin="5,0,0,5" Width="335" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" Height="205" CornerRadius ="10" BorderThickness="3" fw:PointerTracker.Enabled="True" Background="#FF1D1F20">
+                                            <Border Width="330" Height="200" CornerRadius ="10" BorderThickness="3" fw:PointerTracker.Enabled="True" Background="#FF1D1F20">
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Border Width="160" Height="190" CornerRadius="10" Margin="5,5,0,0">
+                                                    <Border Width="170" Height="190" CornerRadius="10" Margin="5,5,0,0">
                                                         <Border.Effect>
                                                             <DropShadowEffect ShadowDepth="1"/>
                                                         </Border.Effect>
@@ -50,10 +50,10 @@
                                                             <ImageBrush ImageSource="{Binding Image}"  Stretch="Fill" />
                                                         </Border.Background>
                                                     </Border>
-                                                    <StackPanel Orientation="Vertical">
-                                                        <TextBlock Foreground="Gray"  Text="{Binding Region}" />
-                                                        <TextBlock Foreground="Gray"  Text="{Binding Sity}" />
-                                                        <TextBlock Foreground="Gray" TextWrapping="Wrap"  Text="{Binding Street}" />
+                                                    <StackPanel Orientation="Vertical" Margin="5,20,0,0">
+                                                        <TextBlock Foreground="Gray" FontSize="20"   Text="{Binding Region}" />
+                                                        <TextBlock Foreground="Gray" Margin="0,5,0,0" FontSize="18"  Text="{Binding Sity}" />
+                                                        <TextBlock Foreground="Gray" Margin="0,5,0,0" FontSize="16" TextWrapping="Wrap"  Text="{Binding Street}" />
                                                     </StackPanel>
                                                 </StackPanel>
                                             </Border>
@@ -111,13 +111,13 @@
                                                         VerticalAlignment="Center"  Margin="0,0,0,0"  >
 
                                 </ComboBox>
-                                <ComboBox  VerticalContentAlignment="Bottom" FontFamily="Helvetica" Width="170" Height="40" HorizontalContentAlignment="Left"  BorderThickness="0,0,0,2"
-                                                            materialDesign:HintAssist.Hint="Етап будівництва" FontSize="16" Foreground="White" FontWeight="Bold" Background="Transparent" x:Name ="Stage"
+                                <TextBox  VerticalContentAlignment="Bottom" FontFamily="Helvetica" Width="170" Height="40" HorizontalContentAlignment="Left"  BorderThickness="0,0,0,2"
+                                                            materialDesign:HintAssist.Hint="Місто" FontSize="16" Foreground="White" FontWeight="Bold" Background="Transparent" x:Name ="TSity"
                                                         VerticalAlignment="Center"  Margin="0,20,0,0"  >
 
-                                </ComboBox>
+                                </TextBox>
                                 <ComboBox FontFamily="Helvetica" VerticalContentAlignment="Bottom" Width="170" Height="40" HorizontalContentAlignment="Left"  BorderThickness="0,0,0,2"
-                                                        x:Name="Position"      materialDesign:HintAssist.Hint="Професія" FontSize="16" Foreground="White" FontWeight="Bold" Background="Transparent" 
+                                                        x:Name="CType"      materialDesign:HintAssist.Hint="Тип будівлі" FontSize="16" Foreground="White" FontWeight="Bold" Background="Transparent" 
                                                         VerticalAlignment="Center"  Margin="0,20,0,0"  >
 
                                 </ComboBox>

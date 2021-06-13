@@ -1,4 +1,5 @@
-﻿using Construction.HttpRequests;
+﻿using Construction.Auxiliary_classes;
+using Construction.HttpRequests;
 using Construction.Model;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Сonstruction.Auxiliary_classes;
 
 namespace Construction.UserControls.ConstructionObjectControlers
 {
@@ -21,15 +23,20 @@ namespace Construction.UserControls.ConstructionObjectControlers
     public partial class BuildsListControl : UserControl
     { 
         private List<ConstructionObject> buildObject;
+        private Regions ORegions;
+        private TypeBuild typeBuild;
         public BuildsListControl()
         {
             InitializeComponent();
             InitDataList();
-            ListView.ItemsSource = buildObject;
+            ORegions = new Regions();
+            typeBuild = new TypeBuild();
+            WRegion.ItemsSource = ORegions.regions;
+            CType.ItemsSource = typeBuild.type;
         }
         private void InitDataList()
         {
-            buildObject = ConstructionRequest.GetALLConstO();
+            buildObject = ConstructionRequest.GetALLConstO(WRegion.Text, TSity.Text, CType.Text);
             if(buildObject != null)
             {
                 foreach (var item in buildObject)
@@ -72,8 +79,9 @@ namespace Construction.UserControls.ConstructionObjectControlers
                         item.Image = bStream;
                     }
                 }
+                
             }
-            
+            ListView.ItemsSource = buildObject;
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
@@ -89,7 +97,7 @@ namespace Construction.UserControls.ConstructionObjectControlers
 
         private void BFilter_Click(object sender, RoutedEventArgs e)
         {
-
+            InitDataList();
         }
 
         private void Border_MouseEnter(object sender, MouseEventArgs e)

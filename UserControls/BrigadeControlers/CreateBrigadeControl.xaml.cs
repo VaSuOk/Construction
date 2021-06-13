@@ -88,6 +88,7 @@ namespace Construction.UserControls.BrigadeControlers
                 UserPick.Visibility = Visibility.Collapsed;
 
                 ((AmountUsers)WorkerAmount.SelectedItem).users[id] = b;
+                ListUsers.ItemsSource = null;
                 ListUsers.ItemsSource = ((AmountUsers)WorkerAmount.SelectedItem).users;
                 ListUsers.ToolTip = null;
                 InitUserToBrigade(id, (int)b.ID);
@@ -128,6 +129,7 @@ namespace Construction.UserControls.BrigadeControlers
                 {
                     
                     ((AmountUsers)WorkerAmount.SelectedItem).users[id] = new UserWorkInformation();
+                    ListUsers.ItemsSource = null;
                     ListUsers.ItemsSource = ((AmountUsers)WorkerAmount.SelectedItem).users;
                     ListUsers.ToolTip = null;
                     InitUserToBrigade(id);
