@@ -40,7 +40,7 @@
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <Border Margin="5,0,0,5" Width="335" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" Height="205" CornerRadius ="10" BorderThickness="3" fw:PointerTracker.Enabled="True" Background="#FF1D1F20">
-                                            <Border Width="330" Height="200" CornerRadius ="10" BorderThickness="3" fw:PointerTracker.Enabled="True" Background="#FF1D1F20">
+                                            <Border Width="330" PreviewMouseDown="Border_PreviewMouseDown" Height="200" CornerRadius ="10" BorderThickness="3" fw:PointerTracker.Enabled="True" Background="#FF1D1F20">
                                                 <StackPanel Orientation="Horizontal">
                                                     <Border Width="170" Height="190" CornerRadius="10" Margin="5,5,0,0">
                                                         <Border.Effect>

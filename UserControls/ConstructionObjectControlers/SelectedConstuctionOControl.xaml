@@ -1,0 +1,148 @@
+﻿<UserControl x:Class="Construction.UserControls.ConstructionObjectControlers.SelectedConstuctionOControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Construction.UserControls.ConstructionObjectControlers"
+             mc:Ignorable="d" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="620" d:DesignWidth="1100">
+    <Grid Background="#FF2A2C2E">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="650"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="500"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--Дані користувача-->
+        <Grid Grid.Row="0" Grid.Column="0">
+            <StackPanel Margin="10,40,0,0" Orientation="Vertical">
+                <Label Content="Особисті дані замовника" HorizontalAlignment="Center" FontSize="16" FontFamily="Helvetica"
+                                FontWeight="Bold" Margin="0,30,0,0"  Foreground="Gray" ></Label>
+                <TextBox x:Name="TextPIB"
+                                MaxLength="60"
+                                FontFamily="Helvetica"
+                                FontWeight="Bold"
+                                materialDesign:HintAssist.Hint="Ініціали замовника"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                FontSize="20"
+                                Foreground="White"
+                                BorderThickness="0,0,0,2"
+                                Width="530" Height="50" Cursor="IBeam">
+                </TextBox>
+                <StackPanel HorizontalAlignment="Center"  Orientation="Horizontal"  Margin="0,40,0,0">
+                    <TextBox x:Name="TextPhone"
+                                MaxLength="20"
+                                FontFamily="Helvetica"
+                                FontWeight="Bold"
+                                materialDesign:HintAssist.Hint="Номер телефону"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                FontSize="20"
+                                Foreground="White"
+                                BorderThickness="0,0,0,2"
+                                Width="250" Height="50" Cursor="IBeam">
+                    </TextBox>
+                    <TextBox x:Name="TextEmail"
+                             Margin="30,0,0,0"
+                                MaxLength="30"
+                                FontFamily="Helvetica"
+                                FontWeight="Bold"
+                                materialDesign:HintAssist.Hint="Електронна пошта"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                FontSize="20"
+                                Foreground="White"
+                                BorderThickness="0,0,0,2"
+                                Width="250" Height="50" Cursor="IBeam">
+                    </TextBox>
+
+                </StackPanel>
+                <Label Content="Місце будівництва" HorizontalAlignment="Center" FontSize="16" FontFamily="Helvetica"
+                                FontWeight="Bold" Margin="0,30,0,0"  Foreground="Gray" ></Label>
+                <StackPanel HorizontalAlignment="Center"  Orientation="Horizontal" Margin="0,20,0,40" >
+                    <ComboBox  VerticalContentAlignment="Bottom" FontFamily="Helvetica" Width="250" Height="50" HorizontalContentAlignment="Center"  BorderThickness="0,0,0,2"
+                                materialDesign:HintAssist.Hint="Область" FontSize="20" Foreground="White" FontWeight="Bold" Background="Transparent" x:Name ="WRegion"
+                                                    VerticalAlignment="Center"  Margin="0,0,0,0"  >
+
+                    </ComboBox>
+                    <TextBox x:Name="TextSity"
+                             Margin="30,0,0,0"
+                                MaxLength="30"
+                                FontFamily="Helvetica"
+                                FontWeight="Bold"
+                                materialDesign:HintAssist.Hint="Місто"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                FontSize="20"
+                                Foreground="White"
+                                BorderThickness="0,0,0,2"
+                                Width="250" Height="50" Cursor="IBeam">
+                    </TextBox>
+                </StackPanel>
+                <TextBox x:Name="TextStreet"
+                                MaxLength="60"
+                                FontFamily="Helvetica"
+                                FontWeight="Bold"
+                                materialDesign:HintAssist.Hint="Вулиця"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                FontSize="20"
+                                Foreground="White"
+                                BorderThickness="0,0,0,2"
+                                Width="530" Height="50" Cursor="IBeam">
+                </TextBox>
+
+            </StackPanel>
+
+        </Grid>
+
+        <!--Дані будинку-->
+        <Grid Grid.Row="0" Grid.Column="1" Margin="0,40,0,0">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <Label Content="Дані будівельного об'єкта" HorizontalAlignment="Center" FontSize="16" FontFamily="Helvetica"
+                                FontWeight="Bold" Margin="0,30,0,0"  Foreground="Gray" ></Label>
+                <ComboBox  VerticalContentAlignment="Bottom" FontFamily="Helvetica" Width="350" Height="50"  BorderThickness="0,0,0,2"
+                                materialDesign:HintAssist.Hint="Тип будівлі" FontSize="20" Foreground="White" FontWeight="Bold" Background="Transparent" x:Name ="CObjectType"
+                                Margin="0,0,0,30"  >
+
+                </ComboBox>
+                <ComboBox  VerticalContentAlignment="Bottom" FontFamily="Helvetica" Width="350" Height="50"  BorderThickness="0,0,0,2"
+                                materialDesign:HintAssist.Hint="Тип даху" FontSize="20" Foreground="White" FontWeight="Bold" Background="Transparent" x:Name ="CTypeRoof"
+                                Margin="0,0,0,30"  >
+
+                </ComboBox>
+                <ComboBox  VerticalContentAlignment="Bottom" FontFamily="Helvetica" Width="350" Height="50"  BorderThickness="0,0,0,2"
+                                materialDesign:HintAssist.Hint="Матеріал покрівлі" FontSize="20" Foreground="White" FontWeight="Bold" Background="Transparent" x:Name ="CRoofMaterial"
+                                Margin="0,0,0,30"  >
+
+                </ComboBox>
+                <ComboBox  VerticalContentAlignment="Bottom" FontFamily="Helvetica" Width="350" Height="50"  BorderThickness="0,0,0,2"
+                                materialDesign:HintAssist.Hint="Матеріал стін" FontSize="20" Foreground="White" FontWeight="Bold" Background="Transparent" x:Name ="CWallMaterial"
+                                Margin="0,0,0,30"  >
+
+                </ComboBox>
+                <TextBox x:Name="TextData"
+                         Focusable="False"
+                                FontFamily="Helvetica"
+                                FontWeight="Bold"
+                                materialDesign:HintAssist.Hint="Дата створення"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                FontSize="20"
+                                Foreground="White"
+                                BorderThickness="0,0,0,1"
+                                Width="350" Height="50" Cursor="IBeam">
+                </TextBox>
+            </StackPanel>
+        </Grid>
+        <!--Низ логбар+кнопки-->
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal" Margin="20,30,0,0">
+                <Border Background="Gray" Width="1040" Height="50">
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="LogBar" Width="500" Foreground="#FF17191A" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"></Label>
+                        <Button Click="Save_Click" Content="ЗБЕРЕГТИ" FontSize="17" Background="#FF17191A" Foreground="Gray" Margin="20,0,0,0" Width="230" Height="40" Cursor="Hand"></Button>
+                        <Button Click="Delete_Click" Content="ВИДАЛИТИ" FontSize="17" Background="#FF17191A" Foreground="Gray" Margin="20,0,0,0" Width="230" Height="40"></Button>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

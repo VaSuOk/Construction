@@ -22,7 +22,7 @@ namespace Construction.UserControls.ConstructionObjectControlers
         {
             InitializeComponent();
             GridCreateConstructionObject.Children.Add(new CreateConstructionOControl());
-            GridListConstructionObject.Children.Add(new BuildsListControl());
+            GridListConstructionObject.Children.Add(new BuildsListControl(ref SelectedItem));
         }
     }
 }

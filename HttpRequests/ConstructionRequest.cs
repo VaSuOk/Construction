@@ -60,5 +60,60 @@ namespace Construction.HttpRequests
             }
         }
         #endregion
+
+        #region DELETE
+        public static async System.Threading.Tasks.Task<bool> DeleteConstructionO(int id)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                using (var request = new HttpRequestMessage(HttpMethod.Delete, String.Format("https://localhost:44394/ConstructionObject/" + id)))
+                {
+
+                    using (var response = await client
+                        .SendAsync(request, HttpCompletionOption.ResponseHeadersRead)
+                        .ConfigureAwait(false))
+                    {
+                        response.EnsureSuccessStatusCode();
+                    }
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        #region POST
+        public static async System.Threading.Tasks.Task<bool> UppdateConstructionO(ConstructionObject  constructionObject)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                using (var request = new HttpRequestMessage(HttpMethod.Post, String.Format("https://localhost:44394/ConstructionObject")))
+                {
+                    var json = JsonConvert.SerializeObject(constructionObject);
+                    using (var stringContent = new StringContent(json, Encoding.UTF8, "application/json"))
+                    {
+                        request.Content = stringContent;
+
+                        using (var response = await client
+                            .SendAsync(request, HttpCompletionOption.ResponseHeadersRead)
+                            .ConfigureAwait(false))
+                        {
+                            response.EnsureSuccessStatusCode();
+                        }
+                    }
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
     }
 }

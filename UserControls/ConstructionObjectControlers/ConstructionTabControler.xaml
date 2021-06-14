@@ -36,6 +36,20 @@
                     </StackPanel>
                 </TabItem.Content>
             </TabItem>
+            <TabItem x:Name="SelectedItem" Visibility="Collapsed">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="3" Text="Обране замовлення" FontWeight="Medium"></TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <StackPanel>
+                        <Grid x:Name="GridSelectedItem" Width="1100" Height="615">
+
+                        </Grid>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
         </TabControl>
     </Grid>
 </UserControl>

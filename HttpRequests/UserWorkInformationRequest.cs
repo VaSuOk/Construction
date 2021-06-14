@@ -42,6 +42,23 @@ namespace Construction.HttpRequests
                 return null;
             }
         }
+        public static List<UserWorkInformation> GetUserWIByInitial(string Name, string Surname)
+        {
+            if (Name == "") { Name = "none"; }
+            if (Surname == "") { Surname = "none"; }
+            try
+            {
+                var webRequest = (HttpWebRequest)WebRequest.Create("https://localhost:44394/UserWorkInformation/" + Name+"/"+ Surname);
+                var webResponse = (HttpWebResponse)webRequest.GetResponse();
+                var reader = new StreamReader(webResponse.GetResponseStream());
+                string temp = reader.ReadToEnd();
+                return JsonConvert.DeserializeObject<List<UserWorkInformation>>(temp);
+            }
+            catch
+            {
+                return null;
+            }
+        }
 
         public static List<UserWorkInformation> GetUserByStageAndPosition( string Region, string Stage, string Position)
         {

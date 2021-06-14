@@ -25,10 +25,12 @@ namespace Construction.UserControls.ConstructionObjectControlers
         private List<ConstructionObject> buildObject;
         private Regions ORegions;
         private TypeBuild typeBuild;
-        public BuildsListControl()
+        private TabItem tabItem1;
+        public BuildsListControl(ref TabItem tabItem)
         {
             InitializeComponent();
             InitDataList();
+            tabItem1 = tabItem;
             ORegions = new Regions();
             typeBuild = new TypeBuild();
             WRegion.ItemsSource = ORegions.regions;
@@ -111,6 +113,16 @@ namespace Construction.UserControls.ConstructionObjectControlers
             var border = (Border)sender;
             var bc = new BrushConverter();
             border.Background = (Brush)bc.ConvertFrom("#FF1D1F20");
+        }
+        private void Border_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var border = (FrameworkElement)sender;
+            var text = (ConstructionObject)border.DataContext;
+            if (text.ID > 0)
+            {
+                tabItem1.Content = new SelectedConstuctionOControl(text);
+                tabItem1.Visibility = Visibility.Visible;
+            }
         }
     }
 }
