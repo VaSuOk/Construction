@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Source\freedom.png" />
+    <None Remove="Source\oficc.png" />
     <None Remove="Source\Private.png" />
+    <None Remove="Source\заводФ.png" />
+    <None Remove="Source\квартика.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,7 +21,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Source\freedom.png" />
+    <Resource Include="Source\oficc.png" />
     <Resource Include="Source\Private.png" />
+    <Resource Include="Source\заводФ.png" />
+    <Resource Include="Source\квартика.png" />
   </ItemGroup>
 
 </Project>

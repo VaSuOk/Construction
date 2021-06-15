@@ -55,13 +55,22 @@ namespace Construction.UserControls.BrigadeControlers
         }
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
+            ButtonOpenSearch.Visibility = Visibility.Visible;
+            ButtonCloseSearch.Visibility = Visibility.Collapsed;
+            RFilter.Visibility = Visibility.Visible;
             ButtonCloseMenu.Visibility = Visibility.Visible;
             ButtonOpenMenu.Visibility = Visibility.Collapsed;
+            ButtonRefresh.Visibility = Visibility.Collapsed;
+            ButtonOpenSearch.Visibility = Visibility.Collapsed;
+
+            RSearch.Visibility = Visibility.Collapsed;
         }
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
             ButtonOpenMenu.Visibility = Visibility.Visible;
+            ButtonRefresh.Visibility = Visibility.Visible;
+            ButtonOpenSearch.Visibility = Visibility.Visible;
         }
 
         private void Border_PreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -91,6 +100,48 @@ namespace Construction.UserControls.BrigadeControlers
             var border = (Border)sender;
             var bc = new BrushConverter();
             border.Background =(Brush)bc.ConvertFrom("#FF1D1F20");
+        }
+
+        private void ButtonRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            viewBrigades = new List<ViewBrigade>();
+            List<Brigade> brigades = BrigadeRequest.GetBrigade("none", "none", false);
+            if (brigades != null)
+            {
+                foreach (var item in brigades)
+                {
+                    viewBrigades.Add(new ViewBrigade(item));
+                }
+            }
+            ListView.ItemsSource = viewBrigades;
+        }
+
+        private void ButtonCloseSearch_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonOpenSearch.Visibility = Visibility.Visible;
+            ButtonCloseSearch.Visibility = Visibility.Collapsed;
+        }
+
+        private void ButtonOpenSearch_Click(object sender, RoutedEventArgs e)
+        {
+            RFilter.Visibility = Visibility.Collapsed;
+            RSearch.Visibility = Visibility.Visible;
+            ButtonOpenSearch.Visibility = Visibility.Collapsed;
+            ButtonCloseSearch.Visibility = Visibility.Visible;
+        }
+
+        private void BSearch_Click(object sender, RoutedEventArgs e)
+        {
+            viewBrigades = new List<ViewBrigade>();
+            List<Brigade> brigades = BrigadeRequest.GetBrigadeByName(SearchName.Text);
+            if (brigades != null)
+            {
+                foreach (var item in brigades)
+                {
+                    viewBrigades.Add(new ViewBrigade(item));
+                }
+            }
+            ListView.ItemsSource = viewBrigades;
         }
     }
 }

@@ -28,6 +28,13 @@
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
+
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenSearch">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseSearch">
+            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
     </UserControl.Triggers>
     
     <Grid Background="#FF2A2C2E">
@@ -138,7 +145,16 @@
 
 
                 <Grid x:Name="Filter">
-                    <Border BorderThickness="1"  Background="#FF1D1F20" Opacity="1" CornerRadius="2"  Margin="1,0,80,0" BorderBrush="Gray">
+                    <Button x:Name="ButtonOpenSearch" Background="#FF1D1F20" Visibility="Visible" Height="55" Width="60" Margin="1,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top"  BorderBrush="{x:Null}" Foreground="Gray" Click="ButtonOpenSearch_Click">
+                        <materialDesign:PackIcon Kind="SearchAdd" Width="25" Height="25"/>
+                    </Button>
+                    <Button x:Name="ButtonCloseSearch" Background="#FF1D1F20" Visibility="Collapsed" Height="55" Width="60" Margin="1,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top"  BorderBrush="{x:Null}" Foreground="Gray" Click="ButtonCloseSearch_Click">
+                        <materialDesign:PackIcon Kind="SearchMinus" Width="25" Height="25"/>
+                    </Button>
+                    <Button x:Name="ButtonRefresh" Background="#FF1D1F20" Visibility="Visible" Height="55" Width="60" Margin="1,65,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top"  BorderBrush="{x:Null}" Foreground="Gray" Click="ButtonRefresh_Click">
+                        <materialDesign:PackIcon Kind="Refresh" Width="25" Height="25"/>
+                    </Button>
+                    <Border x:Name="RFilter" BorderThickness="1"  Background="#FF1D1F20" Opacity="1" CornerRadius="2"  Margin="1,0,80,0" BorderBrush="Gray">
 
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="300">
@@ -162,6 +178,27 @@
                                 </ComboBox>
 
                                 <Button Click="BFilter_Click" x:Name="BFilter"  Content="ЗАСТОСУВАТИ" FontSize="16" FontWeight="Bold" Margin="0,40,0,0"  Background="#FF35373A" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border x:Name="RSearch"  BorderThickness="3"   Background="#FF1D1F20" Opacity="1" CornerRadius="5"  Margin="1,60,80,0" BorderBrush="#FF35373A">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="190">
+
+                            <StackPanel Orientation="Vertical" Margin ="0,10,0,0">
+                                <Label Foreground="Gray" HorizontalAlignment="Center" Content="Пошук" FontSize="18" ></Label>
+                                <TextBox x:Name="SearchName"
+                                                        FontFamily="Helvetica"
+                                                        FontWeight="Bold"
+                                                        materialDesign:HintAssist.Hint="Назва бригади"
+                                                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                        Foreground="White"
+                                                        BorderThickness="0,0,0,1" VerticalContentAlignment="Bottom"
+                                                        Width="170" Height="50" Cursor="IBeam">
+                                </TextBox>
+                                
+
+                                <Button Click="BSearch_Click" x:Name="BSearch"  Content="ЗНАЙТИ" FontSize="16" FontWeight="Bold" Margin="0,40,0,0"  Background="#FF35373A" />
                             </StackPanel>
                         </StackPanel>
                     </Border>

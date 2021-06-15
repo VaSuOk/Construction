@@ -29,6 +29,7 @@ namespace Construction.UserControls.ConstructionObjectControlers
         public BuildsListControl(ref TabItem tabItem)
         {
             InitializeComponent();
+            buildObject = ConstructionRequest.GetALLConstO(WRegion.Text, TSity.Text, CType.Text);
             InitDataList();
             tabItem1 = tabItem;
             ORegions = new Regions();
@@ -38,7 +39,6 @@ namespace Construction.UserControls.ConstructionObjectControlers
         }
         private void InitDataList()
         {
-            buildObject = ConstructionRequest.GetALLConstO(WRegion.Text, TSity.Text, CType.Text);
             if(buildObject != null)
             {
                 foreach (var item in buildObject)
@@ -56,22 +56,22 @@ namespace Construction.UserControls.ConstructionObjectControlers
                                 }
                             case "Квартирний будинок":
                                 {
-                                    fs = new FileStream(@"D:\KPK\ДИПЛОМ\SOFT\Сonstruction сompany\Source\User.png", FileMode.Open, FileAccess.Read);
+                                    fs = new FileStream(@"D:\KPK\ДИПЛОМ\SOFT\Construction\Source\квартика.png", FileMode.Open, FileAccess.Read);
                                     break;
                                 }
                             case "Офісний будинок":
                                 {
-                                    fs = new FileStream(@"D:\KPK\ДИПЛОМ\SOFT\Сonstruction сompany\Source\User.png", FileMode.Open, FileAccess.Read);
+                                    fs = new FileStream(@"D:\KPK\ДИПЛОМ\SOFT\Construction\Source\oficc.png", FileMode.Open, FileAccess.Read);
                                     break;
                                 }
                             case "Виробничий будинок":
                                 {
-                                    fs = new FileStream(@"D:\KPK\ДИПЛОМ\SOFT\Сonstruction сompany\Source\User.png", FileMode.Open, FileAccess.Read);
+                                    fs = new FileStream(@"D:\KPK\ДИПЛОМ\SOFT\Construction\Source\заводФ.png", FileMode.Open, FileAccess.Read);
                                     break;
                                 }
                             case "Оздоровчий будинок":
                                 {
-                                    fs = new FileStream(@"D:\KPK\ДИПЛОМ\SOFT\Сonstruction сompany\Source\User.png", FileMode.Open, FileAccess.Read);
+                                    fs = new FileStream(@"D:\KPK\ДИПЛОМ\SOFT\Construction\Source\freedom.png", FileMode.Open, FileAccess.Read);
                                     break;
                                 }
                         }
@@ -88,17 +88,27 @@ namespace Construction.UserControls.ConstructionObjectControlers
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
+            ButtonOpenSearch.Visibility = Visibility.Visible;
+            ButtonCloseSearch.Visibility = Visibility.Collapsed;
+            RFilter.Visibility = Visibility.Visible;
             ButtonCloseMenu.Visibility = Visibility.Visible;
             ButtonOpenMenu.Visibility = Visibility.Collapsed;
+            ButtonRefresh.Visibility = Visibility.Collapsed;
+            ButtonOpenSearch.Visibility = Visibility.Collapsed;
+
+            RSearch.Visibility = Visibility.Collapsed;
         }
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
             ButtonOpenMenu.Visibility = Visibility.Visible;
+            ButtonRefresh.Visibility = Visibility.Visible;
+            ButtonOpenSearch.Visibility = Visibility.Visible;
         }
 
         private void BFilter_Click(object sender, RoutedEventArgs e)
         {
+            buildObject = ConstructionRequest.GetALLConstO(WRegion.Text, TSity.Text, CType.Text);
             InitDataList();
         }
 
@@ -123,6 +133,32 @@ namespace Construction.UserControls.ConstructionObjectControlers
                 tabItem1.Content = new SelectedConstuctionOControl(text);
                 tabItem1.Visibility = Visibility.Visible;
             }
+        }
+
+        private void ButtonOpenSearch_Click(object sender, RoutedEventArgs e)
+        {
+            RFilter.Visibility = Visibility.Collapsed;
+            RSearch.Visibility = Visibility.Visible;
+            ButtonOpenSearch.Visibility = Visibility.Collapsed;
+            ButtonCloseSearch.Visibility = Visibility.Visible;
+        }
+
+        private void ButtonCloseSearch_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonOpenSearch.Visibility = Visibility.Visible;
+            ButtonCloseSearch.Visibility = Visibility.Collapsed;
+        }
+
+        private void ButtonRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            buildObject = ConstructionRequest.GetALLConstO("none", "none", "none");
+            InitDataList();
+        }
+
+        private void BSearch_Click(object sender, RoutedEventArgs e)
+        {
+            buildObject = ConstructionRequest.GetConstructionOBySearch(SearchName.Text, SearchStreet.Text);
+            InitDataList();
         }
     }
 }

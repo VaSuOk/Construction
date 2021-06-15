@@ -115,6 +115,25 @@ namespace Construction.HttpRequests
                 return null;
             }
         }
-#endregion
+
+        public static List<Brigade> GetBrigadeByName(string Name)
+        {
+            if (Name == "") { Name = "none"; }
+
+            try
+            {
+                var webRequest = (HttpWebRequest)WebRequest.Create("https://localhost:44394/Brigade/" + Name);
+                var webResponse = (HttpWebResponse)webRequest.GetResponse();
+                var reader = new StreamReader(webResponse.GetResponseStream());
+                string temp = reader.ReadToEnd();
+                return JsonConvert.DeserializeObject<List<Brigade>>(temp);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        #endregion
     }
 }
