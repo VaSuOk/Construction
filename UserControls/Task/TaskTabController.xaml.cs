@@ -21,11 +21,7 @@ namespace Construction.UserControls.Task
         public TaskTabController()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Tasks.SelectedIndex++;
+            GridCreateTaskArchitect.Children.Add(new CreateTaskArchitect());
         }
     }
 }

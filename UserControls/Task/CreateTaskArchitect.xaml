@@ -1,0 +1,145 @@
+﻿<UserControl x:Class="Construction.UserControls.Task.CreateTaskArchitect"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Construction.UserControls.Task"
+             mc:Ignorable="d" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="620" d:DesignWidth="1100">
+    <Grid Background ="#FF2A2C2E">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!--Панель працівника-->
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Border Margin="5" CornerRadius="10" Background="#FF17191A">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label  Content="Оберіть Архітектора" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"  Foreground="Gray"/>
+                    </StackPanel>
+                    <Border CornerRadius="10,0,0,10" Margin="15,0,15,0" Background="#FF2A2C2E" Height="420" BorderBrush="Gray" BorderThickness="3">
+                        <StackPanel>
+                            <ScrollViewer Height="420">
+                                <StackPanel Orientation="Vertical">
+                                    <ListView x:Name="ListWorker" ItemsSource="{Binding architectors}" Margin="3,0,0,0" >
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border CornerRadius="10" Background="#FF17191A">
+                                                    <StackPanel Orientation="Horizontal" Background="Transparent" Width="458">
+                                                        <Border CornerRadius="10" Width="80" Height="60">
+                                                            <Border.Background>
+                                                                <ImageBrush ImageSource = "{Binding user.UserImage}" />
+                                                            </Border.Background>
+                                                        </Border>
+                                                        
+                                                        <TextBlock Margin="10,0,0,0" FontSize="18" Foreground="Gray" FontWeight="Bold" VerticalAlignment="Center" Text="{Binding user.Name}"/>
+                                                        <TextBlock Margin="10,0,0,0" FontSize="18" Foreground="Gray" FontWeight="Bold" VerticalAlignment="Center" Text="{Binding user.Surname}"/>
+                                                        <TextBlock Margin="30,0,0,0" FontSize="18" Foreground="Gray" FontWeight="Bold" HorizontalAlignment="Right"  VerticalAlignment="Center" Text="{Binding Salary}"/>
+                                                    </StackPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </StackPanel>
+                    </Border>
+                    <StackPanel Orientation="Vertical" Margin="0,5,0,0">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBox x:Name="SearchName"
+                                                        FontFamily="Helvetica"
+                                                        FontWeight="Bold" Margin ="0,0,0,0"
+                                                        materialDesign:HintAssist.Hint="Ім'я"
+                                                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                        Foreground="White"
+                                                        BorderThickness="0,0,0,1" VerticalContentAlignment="Bottom"
+                                                        Width="170" Height="40" Cursor="IBeam">
+                            </TextBox>
+                            <TextBox x:Name="SearchSurname"
+                                                        FontFamily="Helvetica"
+                                                        FontWeight="Bold" VerticalContentAlignment="Bottom"
+                                                        materialDesign:HintAssist.Hint="Прізвище"
+                                                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                        Foreground="White" Margin ="40,0,0,0"
+                                                        BorderThickness="0,0,0,1"
+                                                        Width="170" Height="40" Cursor="IBeam">
+                            </TextBox>
+                        </StackPanel>
+
+                        <Button Click="BSearch_Click" x:Name="BSearch"  Content="ЗНАЙТИ" FontSize="16" Width="200" FontWeight="Bold" Margin="0,10,0,0"  Background="#FF35373A" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!--Панель завдань-->
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Border Margin="5" CornerRadius="10" Background="#FF17191A" >
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label  Content="Оберіть будівельний об'єкт" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"  Foreground="Gray"/>
+                    </StackPanel>
+                    <Border CornerRadius="10,0,0,10" Margin="15,0,15,0" Background="#FF2A2C2E" Height="420" BorderBrush="Gray" BorderThickness="3">
+                        <StackPanel>
+                            <ScrollViewer Height="420">
+                                <StackPanel Orientation="Vertical">
+                                    <ListView x:Name="ListConstructionO" ItemsSource="{Binding ConstructionO}" Margin="3,0,0,0" >
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border CornerRadius="10" Background="#FF17191A">
+                                                    <StackPanel Orientation="Horizontal" Width="462">
+                                                        <Border CornerRadius="10" Width="80" Height="60">
+                                                            <Border.Background>
+                                                                <ImageBrush ImageSource = "{Binding Image}" />
+                                                            </Border.Background>
+                                                        </Border>
+                                                        <TextBlock Margin="10,0,0,0" Foreground="Gray" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Text="{Binding Region}"/>
+                                                        <TextBlock Margin="10,0,0,0" Foreground="Gray" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Text="{Binding Sity}"/>
+                                                        <TextBlock Margin="10,0,0,0" Foreground="Gray" FontSize="18" FontWeight="Bold" HorizontalAlignment="Right"  VerticalAlignment="Center" Text="{Binding Street}"/>
+                                                    </StackPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </StackPanel>
+                    </Border>
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                            <ComboBox FontFamily="Helvetica" Width="170" Height="40" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Left"  BorderThickness="0,0,0,2"
+                                                        materialDesign:HintAssist.Hint="Область" FontSize="16" Foreground="White" FontWeight="Bold" Background="Transparent" x:Name ="WRegion"
+                                                        VerticalAlignment="Center"  Margin="10,0,0,0"  >
+
+                            </ComboBox>
+                            <ComboBox FontFamily="Helvetica" VerticalContentAlignment="Bottom" Width="170" Height="40" HorizontalContentAlignment="Left"  BorderThickness="0,0,0,2"
+                                                        x:Name="CType"      materialDesign:HintAssist.Hint="Тип будівлі" FontSize="16" Foreground="White" FontWeight="Bold" Background="Transparent" 
+                                                        VerticalAlignment="Center"  Margin="40,0,0,0"  >
+
+                            </ComboBox>
+                        </StackPanel>
+                        <Button Click="BFilter_Click" x:Name="BFilter"  Content="ЗАСТОСУВАТИ" FontSize="16" Width="200" FontWeight="Bold" Margin="0,10,0,0"  Background="#FF35373A" Cursor="Hand" />
+
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!--Низ логбар+кнопки-->
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                <Border Background="Gray" Width="1080" Height="50">
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="LogBar" Width="700" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"></Label>
+                        <Button Click="Button_Click" Content="СТВОРИТИ ЗАВДАННЯ" FontSize="17" Background="#FF17191A" Foreground="Gray" Margin="90,0,0,0" Width="230" Height="40" Cursor="Hand"></Button>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

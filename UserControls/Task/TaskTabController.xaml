@@ -17,67 +17,50 @@
                 <TabItem.Content>
                     <StackPanel>
                         <Grid x:Name="GridCreateTaskArchitect" Width="1100" Height="615">
-                            <Button Click="Button_Click"></Button>
                         </Grid>
                     </StackPanel>
                 </TabItem.Content>
             </TabItem>
-            <TabItem x:Name="CreatefoundationTask">
+            <TabItem x:Name="Create4Task">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="3" Text="Фундаментна робота" FontWeight="Medium"></TextBlock>
+                        <TextBlock Margin="3" FontWeight="Medium" Text="Проектування плану"></TextBlock>
                     </StackPanel>
                 </TabItem.Header>
                 <TabItem.Content>
                     <StackPanel>
-                        <Grid x:Name="GridFoundationTask" Width="1100" Height="615">
-
+                        <Grid x:Name="GridCreate4Task" Width="1100" Height="615">
                         </Grid>
                     </StackPanel>
                 </TabItem.Content>
             </TabItem>
-            <TabItem x:Name="CreateConstructionTask">
+            <TabItem x:Name="ListTasks">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="3" Text="Будівельна робота" FontWeight="Medium"></TextBlock>
+                        <TextBlock Margin="3" FontWeight="Medium" Text="Проектування плану"></TextBlock>
                     </StackPanel>
                 </TabItem.Header>
                 <TabItem.Content>
                     <StackPanel>
-                        <Grid x:Name="GridConstructionTask" Width="1100" Height="615">
-
+                        <Grid x:Name="GridListTask" Width="1100" Height="615">
                         </Grid>
                     </StackPanel>
                 </TabItem.Content>
             </TabItem>
-            <TabItem x:Name="CreateRoofingTask">
+            <TabItem x:Name="SelectedTask">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="3" Text="Покрівельна робота" FontWeight="Medium"></TextBlock>
+                        <TextBlock Margin="3" FontWeight="Medium" Text="Проектування плану"></TextBlock>
                     </StackPanel>
                 </TabItem.Header>
                 <TabItem.Content>
                     <StackPanel>
-                        <Grid x:Name="GridRoofingTask" Width="1100" Height="615">
-
+                        <Grid x:Name="GridSelectedTask" Width="1100" Height="615">
                         </Grid>
                     </StackPanel>
                 </TabItem.Content>
             </TabItem>
-            <TabItem x:Name="CreateProcessingTask">
-                <TabItem.Header>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="3" Text="Внутрішня обробка" FontWeight="Medium"></TextBlock>
-                    </StackPanel>
-                </TabItem.Header>
-                <TabItem.Content>
-                    <StackPanel>
-                        <Grid x:Name="GridProcessingTask" Width="1100" Height="615">
-
-                        </Grid>
-                    </StackPanel>
-                </TabItem.Content>
-            </TabItem>
+            
         </TabControl>
     </Grid>
 </UserControl>

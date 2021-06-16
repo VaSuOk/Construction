@@ -19,5 +19,7 @@ namespace Construction.Model
 
         public string DataCreate { get; set; }
         public byte[] Image { get; set; }
+
+        public int Stage { get; set; }
     }
 }

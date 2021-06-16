@@ -60,6 +60,22 @@ namespace Construction.HttpRequests
             }
         }
 
+        public static List<ConstructionObject> GetALLConstOByStage(int Stage)
+        {
+            try
+            {
+                var webRequest = (HttpWebRequest)WebRequest.Create("https://localhost:44394/ConstructionObject/" + Stage);
+                var webResponse = (HttpWebResponse)webRequest.GetResponse();
+                var reader = new StreamReader(webResponse.GetResponseStream());
+                string temp = reader.ReadToEnd();
+                return JsonConvert.DeserializeObject<List<ConstructionObject>>(temp);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public static List<ConstructionObject> GetConstructionOBySearch(string Initials, string Street)
         {
             if (Initials == "") { Initials = "none"; }
